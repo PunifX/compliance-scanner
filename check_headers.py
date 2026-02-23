@@ -7,14 +7,17 @@ def check_header(domain):
 
     data_headers= data.headers
     for name in headers_name:
-        for key,value in data_headers.items():
-            if name == key:
-                list_checked.add(name)
-            
-    
-        
-        
+        #for key,value in data_headers.items():
+        #    if name == key:
+        #        list_checked.append(name)
 
+        if name in data_headers:
+            print("[PASS]\n",name)
+        else:
+            print("[FAIL]\n",name)
+            
+
+        
 
 
 if len(sys.argv) > 1:
