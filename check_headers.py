@@ -4,7 +4,11 @@ import sys
 def check_header(domain):
     data = requests.get(domain)
 
+    data_headers= data.headers
     
+    for key,value in data_headers.items():
+        print(key,"",value)
+
 
 
 if len(sys.argv) > 1:
