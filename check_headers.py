@@ -1,13 +1,19 @@
 import requests
 import sys
-
+headers_name = ["Strict-Transport-Security","Content-Security-Policy","X-Frame-Options","X-Content-Type-Options","Referrer-Policy","X-XSS-Protection"]
+list_checked = []
 def check_header(domain):
     data = requests.get(domain)
 
     data_headers= data.headers
+    for name in headers_name:
+        for key,value in data_headers.items():
+            if name == key:
+                list_checked.add(name)
+            
     
-    for key,value in data_headers.items():
-        print(key,"",value)
+        
+        
 
 
 
