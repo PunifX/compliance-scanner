@@ -1,7 +1,7 @@
 import requests
 import sys
 headers_name = ["Strict-Transport-Security","Content-Security-Policy","X-Frame-Options","X-Content-Type-Options","Referrer-Policy","X-XSS-Protection"]
-list_checked = []
+
 def check_header(domain):
     data = requests.get(domain)
 
@@ -12,12 +12,12 @@ def check_header(domain):
         #        list_checked.append(name)
 
         if name in data_headers:
-            print("[PASS]\n",name)
+            print("[PASS]",name,":",data_headers[name])
+            print("----------------------------------------")
         else:
-            print("[FAIL]\n",name)
+            print("[FAIL]",name,": UNKOWN SINCE IT DOESNT EXIST")
+            print("----------------------------------------")
             
-
-        
 
 
 if len(sys.argv) > 1:
