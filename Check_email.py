@@ -87,20 +87,18 @@ def Check_Dkim(domain):
     Dkim_found = False
     for selector in selectors:
         try:
-            
             records = dns.resolver.resolve(selector+"._domainkey."+domain,"TXT")
-            for record in records:
-                #print(record)
-                
-                if record.startswith('"') :
-                    Dkim_found = True
-                if Dkim_found:
-                    print("[PASS] DKIM record found")
-                else:
-                    print("[FAIL] No DKIM record")
-                   
+
+            #print(record)
+            Dkim_found = True
+            print("[PASS] DKIM record found,selector:",selector)
+            break
+ 
         except:
             continue
+
+    if not  Dkim_found:
+        print("[FAIL] No DKIM record")
 
 if len(sys.argv) > 1:
     domain = str(sys.argv[1])
