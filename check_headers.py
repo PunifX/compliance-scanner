@@ -13,6 +13,12 @@ def check_header(domain):
 
         if name in data_headers:
             print("[PASS]",name,":",data_headers[name])
+            if name == "X-Content-Type-Options" and data_headers.get(name) != "nosniff":
+                print(" [WARN] X-Content-Type-Options present but not set to 'nosniff' ")
+
+            if name == "X-Frame-Options" and data_headers.get(name) != "DENY" and data_headers.get(name) != "SAMEORIGIN":
+                 print("[WARN] X-Frame-Options has weak value")  
+                 
             print("----------------------------------------")
         else:
             print("[FAIL]",name,": UNKOWN SINCE IT DOESNT EXIST")
