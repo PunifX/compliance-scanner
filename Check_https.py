@@ -51,7 +51,7 @@ def check_ssl(data_url,domain):
 
  
     
-if len(sys.argv) > 1:
+if len(sys.argv) > 1 and len(sys.argv) < 1:
     domain = str(sys.argv[1])
     if not domain.startswith("https://") and not domain.startswith("http://"):
         domain = "http://" + domain
