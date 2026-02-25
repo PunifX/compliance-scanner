@@ -41,16 +41,15 @@ def Check_Cookies(domain):
     cookie_detected = False
     data = requests.get(domain)
     for cookie in data.cookies:
-        i = 0
-        while i < len(tracking_cookies):
-            
-            if cookie.name.startswith(tracking_cookies[i]):
-                print("[FAIL] Tracking cookie set before consent")
-                print(cookie.name)
-                print("-------------------------------")
-                cookie_detected = True
-            i=i+1
-    if cookie_detected == False:
+ 
+
+        if cookie.name in tracking_cookies:
+            print("[FAIL] Tracking cookie set before consent")
+            print(cookie.name)
+            print("-------------------------------")
+            cookie_detected = True
+         
+    if not cookie_detected :
         print("no tracking cookies detected")
         
 
