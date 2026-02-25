@@ -1,9 +1,19 @@
 import dns.resolver
 import sys
 
-def Chec_email():
+
+def Check_email(domain):
+
+    records = dns.resolver.resolve(domain,"TXT")
+    for record in records:
+        print(record)
+    
 
 
+if len(sys.argv) > 1:
+    domain = str(sys.argv[1])
+    data = Check_email(domain)
 
-if len(sys.argv) > 1 and len(sys.argv) < 1:
-    if 
+else:
+    print("Please enter a domain")
+    sys.exit(1)    

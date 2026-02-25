@@ -26,7 +26,7 @@ def check_header(domain):
             
 
 
-if len(sys.argv) > 1 and len(sys.argv) < 1:
+if len(sys.argv) > 1:
 
     domain = sys.argv[1]
     if not domain.startswith("https://") and not domain.startswith("http://"):
