@@ -4,14 +4,18 @@ from bs4 import BeautifulSoup
 cookies_consent = ["cookie","cookie-consent", "cookie-banner","cookieConsent", "consent-banner", "gdpr", "cookie-notice"]
 def Check_consent(domain):
     data = requests.get(domain)
-    soup = BeautifulSoup(data.text,"html.parser")
+    html = data.text.lower()
+    soup = BeautifulSoup(html,"html.parser")
+    consent = False
     for cookie_consent in cookies_consent:
-        if cookie_consent in soup:
-            print(cookie_consent)
-            print("[PASSED] coookies consent used")
-
-
-
+        if cookie_consent in html:
+            consent = True
+    
+    if consent:
+        print("[PASS] consent does exist")
+    else:
+        print("[FAIL] consent does not exist")
+        
 
 
 if len(sys.argv) > 1:
