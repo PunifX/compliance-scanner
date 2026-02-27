@@ -5,7 +5,7 @@ cookies_consent = ["cookie","cookie-consent", "cookie-banner","cookieConsent", "
 def Check_consent(domain):
     data = requests.get(domain)
     html = data.text.lower()
-    soup = BeautifulSoup(html,"html.parser")
+  
     consent = False
     for cookie_consent in cookies_consent:
         if cookie_consent in html:
