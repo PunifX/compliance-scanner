@@ -7,9 +7,10 @@ def Check_tracker(domain):
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0"}
 
     data = requests.get(domain,headers=headers)
-    soup = BeautifulSoup(data,'html.parser')
+    soup = BeautifulSoup(data.text,"html.parser")
     script = soup.find_all('script',src=True)
     print(script)
+    
 
 
 if len(sys.argv) > 1:
