@@ -1,10 +1,9 @@
 import requests
 import sys
 from bs4 import BeautifulSoup
-cookies_consent = ["cookie-consent", "cookie-banner", "cookieConsent", "consent-banner", "gdpr", "cookie-notice", "onetrust", "cookiebot", "didomi", "trustarc", "axeptio", "cookieyes", "tarteaucitron", "cookie-popup", "consent-dialog", "cc-banner"]
 
 def Check_tracker(domain):
-    found = []
+    
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0"}
 
     data = requests.get(domain,headers=headers)
