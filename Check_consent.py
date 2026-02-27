@@ -5,7 +5,9 @@ cookies_consent = ["cookie-consent", "cookie-banner", "cookieConsent", "consent-
 
 def Check_consent(domain):
     found = []
-    data = requests.get(domain)
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0"}
+
+    data = requests.get(domain,headers=headers)
     html = data.text.lower()
   
     consent = False
@@ -18,7 +20,7 @@ def Check_consent(domain):
         print ("[PASS] consent does exist")
         print(found)
     else:
-        print("[FAIL] consent does not exist")
+        print(print("[FAIL] No consent banner detected in static HTML (may load via JavaScript)"))
         
 
 
