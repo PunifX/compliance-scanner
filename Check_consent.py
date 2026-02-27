@@ -2,6 +2,7 @@ import requests
 import sys
 from bs4 import BeautifulSoup
 cookies_consent = ["cookie","cookie-consent", "cookie-banner","cookieConsent", "consent-banner", "gdpr", "cookie-notice"]
+Found = []
 def Check_consent(domain):
     data = requests.get(domain)
     html = data.text.lower()
@@ -10,9 +11,11 @@ def Check_consent(domain):
     for cookie_consent in cookies_consent:
         if cookie_consent in html:
             consent = True
+            Found.append(cookie_consent)
     
     if consent:
         print("[PASS] consent does exist")
+        print(Found)
     else:
         print("[FAIL] consent does not exist")
         
