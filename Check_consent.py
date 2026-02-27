@@ -1,7 +1,7 @@
 import requests
 import sys
 
-cookies_consent = ["cookie","cookie-consent", "cookie-banner","cookieConsent", "consent-banner", "gdpr", "cookie-notice"]
+cookies_consent = ["cookie-consent", "cookie-banner", "cookieConsent", "consent-banner", "gdpr", "cookie-notice", "onetrust", "cookiebot", "didomi", "trustarc", "axeptio", "cookieyes", "tarteaucitron", "cookie-popup", "consent-dialog", "cc-banner"]
 
 def Check_consent(domain):
     found = []
@@ -15,7 +15,7 @@ def Check_consent(domain):
             found.append(cookie_consent)
     
     if consent:
-        print("[PASS] consent does exist")
+        print ("[PASS] consent does exist")
         print(found)
     else:
         print("[FAIL] consent does not exist")
